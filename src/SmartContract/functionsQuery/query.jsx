@@ -8,6 +8,8 @@ const TotalBalance = () => {
   const [totalBalance, setTotalBalance] = useState('');
   const [myEggs, setMyEggs] = useState('');
   const [marketEggs, setMarketEggs] = useState('');
+  const [actualBalance, setActualBalance] = useState('');
+
 
   const loadData = async (method, setState) => {
     const provider = new ethers.BrowserProvider(window.ethereum);
@@ -52,12 +54,25 @@ const TotalBalance = () => {
     };
   }, []);
 
+  useEffect(() => {
+    loadData("getBalance", setActualBalance);
+
+    const intervalId = setInterval(() => {
+      loadData("getBalance", setActualBalance);
+    }, 3000);
+
+    return () => {
+      clearInterval(intervalId);
+    }
+  }, []);
+
   return (
     <div>
       <button onClick={() => loadData("getTotalBalance", setTotalBalance)}>Click me option2</button>
       <div>Total Balance: {totalBalance}</div>
       <div>My Eggs: {myEggs}</div>
       <div>Market Eggs: {marketEggs}</div>
+      <div>Actual Balance: {actualBalance}</div>
     </div>
   );
 };
