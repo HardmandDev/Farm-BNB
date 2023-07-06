@@ -15,6 +15,20 @@ const loadData = async () => {
     alert(balance)
 }
 
+let signer = null
+
+let provider
+
+if (window.ethereum == null) {
+  alert('Please install MetaMask')
+  provider = ethers.getDefaultProvider()
+
+} else {
+  provider = new ethers.BrowserProvider(window.ethereum)
+
+  signer = await provider.getSigner()
+  console.log(signer)
+}
 
 function App() {
   const [count, setCount] = useState(0)
@@ -37,13 +51,13 @@ function App() {
         <p>
           Change <code>src/App.jsx</code> and save to test HMR
         </p>
-        <button onClick={loadData}>Click Me</button>
+        <button onClick={loadData}>Click Me for Balance on Mumbai</button>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
 export default App
