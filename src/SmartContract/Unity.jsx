@@ -27,7 +27,7 @@ if (window.ethereum == null) {
 }
 
 function Contrato() {
-    return <button onClick={loadData}>Click Me for Balance on Mumbai</button>
+    return <button className='btn btn-outline-primary mt-5' onClick={loadData}>Click Me for Balance on Mumbai</button>
 }
 
 export default Contrato

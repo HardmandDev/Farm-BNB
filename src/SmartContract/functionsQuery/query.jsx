@@ -68,7 +68,7 @@ const TotalBalance = () => {
 
   return (
     <div>
-      <button onClick={() => loadData("getTotalBalance", setTotalBalance)}>Click me option2</button>
+      <button className='btn btn-primary my-5' onClick={() => loadData("getTotalBalance", setTotalBalance)}>Click me option2</button>
       <div>Total Balance: {totalBalance}</div>
       <div>My Eggs: {myEggs}</div>
       <div>Market Eggs: {marketEggs}</div>
