@@ -1,10 +1,10 @@
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/react'
 import { configureChains, createConfig, WagmiConfig } from 'wagmi'
-import { polygonMumbai, bsc, bscTestnet, arbitrum, mainnet, polygon } from 'wagmi/chains'
+import { polygonMumbai, bsc, bscTestnet, polygon } from 'wagmi/chains'
 import { Web3Button } from '@web3modal/react'
 
-const chains = [polygonMumbai, bsc, bscTestnet, arbitrum, mainnet, polygon]
+const chains = [ bsc, polygon, bscTestnet, polygonMumbai ]
 const projectId = 'edf1ed997da5398b2e4c573725e81827'
 
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
@@ -14,6 +14,7 @@ const wagmiConfig = createConfig({
   publicClient
 })
 const ethereumClient = new EthereumClient(wagmiConfig, chains)
+
 
 function HomePage() {
     return <Web3Button />

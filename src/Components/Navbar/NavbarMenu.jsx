@@ -1,4 +1,6 @@
 import WConnect from "./WConnect/WConnect";
+import { Web3NetworkSwitch } from '@web3modal/react'
+
 
 function NavbarMenu() {
   return (
@@ -35,6 +37,7 @@ function NavbarMenu() {
                 <a className="nav-link disabled">Disabled</a>
               </li>
             </ul>
+            <Web3NetworkSwitch />
             <WConnect /> 
           </div>
         </div>
